@@ -1,0 +1,10 @@
+const { pool } = require('../config/connection');
+
+const getCustomers = () => {
+  return pool.query({
+    text: 'SELECT id, name FROM customers;',
+    values: [],
+  });
+};
+
+module.exports = { getCustomers };

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon link -->
+    <link rel="shortcut icon" href="https://torood.co/assets/images/logo.svg" type="image/x-icon">
+    <!-- font link -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- style links-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>Torood</title>
+
+</head>
+
+<body>
+    <div class="fixed-header">
+        <header>
+            <img class="logo" src="https://torood.co/assets/images/logo.svg" alt="Logo"
+                onclick="window.location.href = 'index.html'">
+            <a href="index.html" class="t_logo">Torood</a>
+        </header>
+    
+        <div class="tabs">
+            <button class="btn">Add Store</button>
+            <button class="btn">Add Customer</button>
+            <button class="btn active">Packages</button>
+        </div>
+    
+    </div>
+    <div class="tabs-body">
+        <div class="tab" id="store" style="display: none;">
+            <div class="main">
+                <div class="container">
+                    <div class="heading-form">
+                        <h2>Welcome To Torood &#127881;</h2>
+                    </div>
+                    <div class="main-bg">
+                        <div class="form-holder">
+                            <div class="form-bg">
+                                <form action="/add-store" method="POST" novalidate>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="storeName" name="name"
+                                            placeholder="Enter your store name" required>
+                                        <p id="nameErr" class="error"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="storePhone" name="phone"
+                                            placeholder="Enter your store phone" minlength="10" required>
+                                        <p id="phoneError" class="error"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="storeLink" name="link"
+                                            placeholder="Enter your store website link" required>
+                                        <p id="linkkErr" class="error"></p>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="addStore">Add Store</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="right-div">
+                            <img class="right" src="https://torood.co/assets/images/logo.svg" alt="Torood Image">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    
+        <div class="tab" id="package">
+            <div class="container">
+                <main>
+                    <div class="heading-form">
+                        <h2>All Packages</h2>
+                    </div>
+                    <!-- All Packages -->
+                    <section id="all-screen">
+                        <!-- <div id="image-pack"></div>
+                        <div id="date-price"></div> -->
+                    </section>
+    
+                    <!-- Sent Packages -->
+                    <section id="sent-screen"> </section>
+    
+                    <!-- Add Modal Box Section -->
+                    <div class="modal" id="modal">
+                        <div class="modal-header">
+                            <p class="modal-title">Add Your Package &#10024;</p>
+                            <button class="close-btn">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="/add-package" method="POST">
+                                <div class="first_row">
+                                    <div>
+                                        <input type="text" id="packageName" class="name" placeholder="Enter the package name"
+                                        name="name" required>
+                                    <p id="packageNameErr" class="error"></p>
+                                    </div>
+    
+                                    <div>
+                                        <input type="date" id="packageDate" class="name" placeholder="Enter the date"
+                                        name="date" required>
+                                    <p id="packageDateErr" class="error"></p>
+                                    </div>
+    
+    
+                                </div>
+    
+                                <div class="customer_store_names">
+                                    <div class="select-cus-name">
+                                        <select name="customer_name" id="customerSelectSection">
+                                            <option>Customer Name</option>
+                                        </select>
+                                        <p id="customerSelectErr" class="error"></p>
+                                    </div>
+    
+                                    <div class="select-cus-name">
+                                        <select name="store" id="storeSelectSection">
+                                            <option>Store Name</option>
+                                        </select>
+                                        <p id="storeSelectErr" class="error"></p>
+                                    </div>
+                                </div>
+    
+                                <input type="text" id="packageImage" class="name" placeholder="Enter the Image Link"
+                                    name="image" required>
+                                <p id="packageImageErr" class="error"></p>
+    
+                                <input type="number" value="price" placeholder="Enter package price" name="price"
+                                    id="packagePrice" required>
+                                <p id="packagePriceErr" class="error"></p>
+    
+                                <input id="addPackage" type="submit" value="Submit">
+                            </form>
+                        </div>
+                    </div>
+    
+                    <!-- Overlay -->
+                    <div id="overlay"></div>
+                </main>
+                <!-- Footer -->
+                <footer>
+                    <div id="container">
+                        <div class="inner-container">
+                            <div class="toggle">
+                                <p>Sent</p>
+                            </div>
+                            <div class="toggle">
+                                <p>All</p>
+                            </div>
+                        </div>
+                        <div class="inner-container" id='toggle-container'>
+                            <div class="toggle">
+                                <p>Sent</p>
+                            </div>
+                            <div class="toggle">
+                                <p>All</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <button class="add-btn">+</button>
+                </footer>
+            </div>
+        </div>
+    
+        <div class="tab" id="customer" style="display: none;">
+            <div class="main">
+                <div class="container">
+                    <div class="heading-form">
+                        <h2>Add new customer &#127881;</h2>
+                    </div>
+                    <div class="main-bg">
+                        <div class="form-holder">
+                            <div class="form-bg">
+                                <form action="/add-customer" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="customerName" name="name"
+                                            placeholder="Enter customer name" required>
+                                        <p id="customerNameError" class="error"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="customerPhone" name="phone"
+                                            placeholder="Enter customer phone" required>
+                                        <p id="customerPhoneError" class="error"></p>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="customerAddress" name="address"
+                                            placeholder="Enter customer address">
+                                        <p id="customerAddressErr" class="error"></p>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="addCustomer">Add Customer</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="right-div">
+                            <img class="right" src="https://torood.co/assets/images/logo.svg" alt="Torood Image">
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/fetch.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/validation.js"></script>
+</body>
+
+</html>
